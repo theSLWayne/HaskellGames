@@ -27,7 +27,7 @@ makeguess :: String -> String -> Int -> IO ()
 makeguess word display n =
   do putStrLn (display ++ "  " ++ take n (repeat '*'))
      putStr "Enter your guess: "
-     q <- getLine
+     q <- getLine :: IO String
      let (correct, display') = check word display (q!!0)
      let n' = if correct then n else n-1
      turn word display' n'
